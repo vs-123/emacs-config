@@ -30,6 +30,7 @@
 
 (setq tab-width 3)
 (setq c-basic-offset 3)
+(setq c-ts-mode-indent-offset 3)
 (setq scroll-margin 3)
 (setq scroll-conservatively 101)
 (setq mouse-wheel-scroll-amount 3)
