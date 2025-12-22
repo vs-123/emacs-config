@@ -41,6 +41,7 @@
 (global-set-key (kbd "C-x C-p") 'previous-line)
 (global-set-key (kbd "C-x C-n") 'next-line)
 (global-set-key (kbd "C-x f") 'find-file)
+(global-set-key (kbd "C-x C-h") 'mark-whole-buffer)
 
 (my/pkg-i 'eglot)
 (my/pkg-i 'cmake-mode)
@@ -64,11 +65,11 @@
 
 ;; Eglot
 (require 'eglot)
-(add-hook 'c-mode-hook #'eglot-ensure)
+(add-hook 'c-mode-hook '(lambda () (eglot-ensure)))
 (add-hook 'c++-mode-hook #'eglot-ensure)
 (add-hook 'cmake-mode-hook #'eglot-ensure)
 
-(setq major-mode-remap-list '((c-mode . c-ts-mode)))
+(setq major-mode-remap-alist '((c-mode . c-ts-mode)))
 
 ;; dape
 (my/pkg-i 'dape)
