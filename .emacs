@@ -68,6 +68,8 @@
 (add-hook 'c++-mode-hook #'eglot-ensure)
 (add-hook 'cmake-mode-hook #'eglot-ensure)
 
+(setq major-mode-remap-list '((c-mode . c-ts-mode)))
+
 ;; dape
 (my/pkg-i 'dape)
 
