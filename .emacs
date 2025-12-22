@@ -63,13 +63,13 @@
 (setq org-startup-truncated nil)
 (setq word-wrap t)
 
+(setq major-mode-remap-alist '((c-mode . c-ts-mode)))
+
 ;; Eglot
 (require 'eglot)
-(add-hook 'c-mode-hook '(lambda () (eglot-ensure)))
+(add-hook 'c-ts-mode-hook #'eglot-ensure)
 (add-hook 'c++-mode-hook #'eglot-ensure)
 (add-hook 'cmake-mode-hook #'eglot-ensure)
-
-(setq major-mode-remap-alist '((c-mode . c-ts-mode)))
 
 ;; dape
 (my/pkg-i 'dape)
