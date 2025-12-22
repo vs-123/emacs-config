@@ -34,6 +34,7 @@
 (setq scroll-conservatively 101)
 (setq mouse-wheel-scroll-amount 3)
 (setq backup-inhibited t)
+(setq word-wrap t)
 
 (global-set-key (kbd "<C-tab>") 'tab-bar-switch-to-next-tab)
 (global-set-key (kbd "<C-S-tab>") 'tab-bar-switch-to-prev-tab)
