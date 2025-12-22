@@ -52,7 +52,7 @@
 (my/pkg-i 'package-build)
 
 (my/pkg-i 'royal-hemlock-theme)
-(load-theme 'royal-hemlock)
+(load-theme 'royal-hemlock t)
 
 (setq package-archive-zip-program '("gtar" "-z" "--no-same-owner"))
 
