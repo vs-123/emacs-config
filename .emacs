@@ -4,7 +4,7 @@
 
 (setq package-archives
       '(("gnu" . "https://elpa.gnu.org/packages/")
-	("melpa" . "https://melpa.org/packages/")))
+		  ("melpa" . "https://melpa.org/packages/")))
 (package-initialize)
 
 (defun my/pkg-i (pkg)
@@ -37,15 +37,21 @@
 
 (global-set-key (kbd "<C-tab>") 'tab-bar-switch-to-next-tab)
 (global-set-key (kbd "<C-S-tab>") 'tab-bar-switch-to-prev-tab)
+(global-set-key (kbd "C-x C-p") 'previous-line)
+(global-set-key (kbd "C-x C-n") 'next-line)
+(global-set-key (kbd "C-x f") 'find-file)
 
 (my/pkg-i 'eglot)
 (my/pkg-i 'cmake-mode)
 (my/pkg-i 'magit)
-(my/pkg-i 'htmlize)
 
+(my/pkg-i 'htmlize)
 (my/pkg-i 'package-lint)
 (my/pkg-i 'package-lint-flymake)
 (my/pkg-i 'package-build)
+
+(my/pkg-i 'royal-hemlock-theme)
+(load-theme 'royal-hemlock)
 
 (setq package-archive-zip-program '("gtar" "-z" "--no-same-owner"))
 
@@ -63,18 +69,6 @@
 
 ;; dape
 (my/pkg-i 'dape)
-
-;; RSS
-(setq newsticker-url-list '(("r/linux" "https://www.reddit.com/r/linux.rss")
-			    ("r/ProgrammingLanguages" "https://www.reddit.com/r/ProgrammingLanguages.rss")))
-
-(defun my/quit-newsticker ()
-  "Kill newsticker-related buffers"
-  (kill-buffer "*Newsticker List*")
-  (kill-buffer "*Newsticker Item*")
-  (kill-buffer "*Newsticker Tree*"))
-
-(advice-add 'newsticker-treeview-quit :after 'my/quit-newsticker)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;
 ;; EMACS-ADDED CONFIG ;;
