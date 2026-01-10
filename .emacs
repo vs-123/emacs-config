@@ -39,22 +39,27 @@
 
 (global-set-key (kbd "<C-tab>") 'tab-bar-switch-to-next-tab)
 (global-set-key (kbd "<C-S-tab>") 'tab-bar-switch-to-prev-tab)
+(global-set-key (kbd "M-,") 'tab-bar-switch-to-prev-tab)
+(global-set-key (kbd "M-.") 'tab-bar-switch-to-next-tab)
 (global-set-key (kbd "C-x C-p") 'previous-line)
 (global-set-key (kbd "C-x C-n") 'next-line)
 (global-set-key (kbd "C-x f") 'find-file)
 (global-set-key (kbd "C-x C-h") 'mark-whole-buffer)
+(global-set-key (kbd "C-x s") 'save-buffer)
 
-(my/pkg-i 'eglot)
 (my/pkg-i 'cmake-mode)
 (my/pkg-i 'magit)
 
-(my/pkg-i 'htmlize)
-(my/pkg-i 'package-lint)
-(my/pkg-i 'package-lint-flymake)
-(my/pkg-i 'package-build)
+;(my/pkg-i 'htmlize)
+;(my/pkg-i 'package-lint)
+;(my/pkg-i 'package-lint-flymake)
+;(my/pkg-i 'package-build)
+
+(my/pkg-i 'xclip)
+(xclip-mode 1)
 
 (my/pkg-i 'royal-hemlock-theme)
-(load-theme 'royal-hemlock t)
+(load-theme 'royal-hemlock nil)
 
 (setq package-archive-zip-program '("gtar" "-z" "--no-same-owner"))
 
@@ -67,13 +72,19 @@
 (setq major-mode-remap-alist '((c-mode . c-ts-mode)))
 
 ;; Eglot
+(my/pkg-i 'eglot)
 (require 'eglot)
 (add-hook 'c-ts-mode-hook #'eglot-ensure)
-(add-hook 'c++-mode-hook #'eglot-ensure)
+;(add-hook 'c++-mode-hook #'eglot-ensure)
 (add-hook 'cmake-mode-hook #'eglot-ensure)
+(setq eglot-stay-out-of '(flymake))
 
-;; dape
-(my/pkg-i 'dape)
+;; Company
+(my/pkg-i 'company)
+(add-hook 'after-init-hook 'global-company-mode)
+(setq company-idle-delay nil)
+(setq company-minimum-prefix-length 2)
+(global-set-key (kbd "C-M-i") 'company-complete)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;
 ;; EMACS-ADDED CONFIG ;;
