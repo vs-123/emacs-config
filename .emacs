@@ -15,6 +15,23 @@
 ;;;;;;;;;;;;;;;;;;;
 ;; Actual Config ;;
 ;;;;;;;;;;;;;;;;;;;
+(defun my/rand-str (len)
+   (let ((chars "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
+         (result ""))
+      (dotimes (_ len result)
+         (let ((idx (random (length chars))))
+            (setq result (concat result (substring chars idx (1+ idx))))))))
+
+(defun my/spam-greet ()
+   (let* ((len (+ 333 (random 333)))
+          (entropy (my/rand-str len)))
+      (setq initial-scratch-message 
+         (format ";; %s\n\n" entropy))
+      (setq inhibit-startup-echo-area-message (user-login-name))
+      (add-hook 'emacs-startup-hook 
+         `(lambda () (message "%s" ,entropy)))))
+
+(my/spam-greet)
 
 (menu-bar-mode 0)
 (scroll-bar-mode 0)
