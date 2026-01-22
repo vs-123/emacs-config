@@ -62,7 +62,9 @@
 (global-set-key (kbd "C-x C-n") 'next-line)
 (global-set-key (kbd "C-x f") 'find-file)
 (global-set-key (kbd "C-x C-h") 'mark-whole-buffer)
+(global-set-key (kbd "C-h C-k") 'describe-key)
 (global-set-key (kbd "C-x s") 'save-buffer)
+(global-set-key (kbd "C-z") nil)
 
 (my/pkg-i 'cmake-mode)
 (my/pkg-i 'magit)
